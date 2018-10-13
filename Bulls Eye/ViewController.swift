@@ -34,10 +34,11 @@ class ViewController: UIViewController {
     }
     
     func updateScore() {
-        currentScore = getScore()
+        currentScore += getScore()
     }
     
     func getScore()-> Int{
+        selectedValue = Int(slider.value.rounded())
         let scoreDifference: Int = abs(targetValue-selectedValue)
         return (100-scoreDifference)
     }
@@ -63,8 +64,9 @@ class ViewController: UIViewController {
         
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
-        startNewRound()
+        
         updateScore()
+        startNewRound()
         updateLabels()
         
     }
